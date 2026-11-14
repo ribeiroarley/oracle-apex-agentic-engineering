@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ================================================================= -->
+    <!-- Release v1.1.0: Índices de Performance Tuning (Harness Audit)      -->
+    <!-- Schema: HR | Database: Oracle Database 23ai Free                   -->
+    <!-- ================================================================= -->
+
+    <!-- ChangeSet 1: Índice B-Tree na Foreign Key EMPLOYEE_ID -->
+    <changeSet id="v1.1.0-idx-employee-activity-logs-emp-id" author="dba-agent">
+        <comment>Otimização de Foreign Key Join na tabela EMPLOYEE_ACTIVITY_LOGS</comment>
+        <sql>
+            CREATE INDEX HR.IDX_EMPLOYEE_ACT_LOGS_EMP_ID
+            ON HR.EMPLOYEE_ACTIVITY_LOGS (EMPLOYEE_ID)
+            TABLESPACE USERS;
+        </sql>
+        <rollback>
+            DROP INDEX HR.IDX_EMPLOYEE_ACT_LOGS_EMP_ID;
+        </rollback>
+    </changeSet>
+
+    <!-- ChangeSet 2: Índice Baseado em Função (FBI) no Status e Data -->
+    <changeSet id="v1.1.0-idx-employee-activity-logs-status-date" author="dba-agent">
+        <comment>Otimização de filtro com UPPER(status) e range temporal de data</comment>
+        <sql>
+            CREATE INDEX HR.IDX_EMPLOYEE_ACT_LOGS_STATUS_DATE
+            ON HR.EMPLOYEE_ACTIVITY_LOGS (UPPER(ACTIVITY_STATUS), LOG_DATE)
+            TABLESPACE USERS;
+        </sql>
+        <rollback>
+            DROP INDEX HR.IDX_EMPLOYEE_ACT_LOGS_STATUS_DATE;
+        </rollback>
+    </changeSet>
+
+    <!-- ChangeSet 3: Índice Composto na FK e Nível de Severidade -->
+    <changeSet id="v1.1.0-idx-employee-activity-logs-emp-sev" author="dba-agent">
+        <comment>Otimização de semijunção com filtro de severidade</comment>
+        <sql>
+            CREATE INDEX HR.IDX_EMPLOYEE_ACT_LOGS_EMP_SEV
+            ON HR.EMPLOYEE_ACTIVITY_LOGS (EMPLOYEE_ID, SEVERITY_LEVEL)
+            TABLESPACE USERS;
+        </sql>
+        <rollback>
+            DROP INDEX HR.IDX_EMPLOYEE_ACT_LOGS_EMP_SEV;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

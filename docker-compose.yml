@@ -1,0 +1,3 @@
+include:
+  - path: lab-01-sqlcl-mcp/docker-compose.yml
+    env_file: lab-01-sqlcl-mcp/.env.lab

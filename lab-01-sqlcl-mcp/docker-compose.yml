@@ -1,0 +1,34 @@
+name: ora23ai-mcp-lab
+
+services:
+  database:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: ora23ai-mcp-lab-db
+    hostname: ora23ai-lab-host
+    env_file:
+      - .env.lab
+    ports:
+      - "${ORACLE_PORT:-1521}:1521"
+    volumes:
+      - ora23ai-lab-oradata-vol:/opt/oracle/oradata
+      - ./init-scripts:/container-entrypoint-initdb.d:ro
+      - ./init-scripts:/opt/oracle/scripts/startup:ro
+      - ./init-scripts:/opt/oracle/scripts/setup:ro
+    networks:
+      - ora23ai-lab-bridge-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL; exit;' | sqlplus -s / as sysdba | grep -q 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+volumes:
+  ora23ai-lab-oradata-vol:
+    name: ora23ai-lab-oradata-vol
+
+networks:
+  ora23ai-lab-bridge-net:
+    name: ora23ai-lab-bridge-net
+    driver: bridge

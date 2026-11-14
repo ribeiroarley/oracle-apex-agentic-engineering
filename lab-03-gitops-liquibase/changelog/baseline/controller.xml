@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext" 
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+  <include file="countries_table.xml" relativeToChangelogFile="true"/> 
+  <include file="departments_table.xml" relativeToChangelogFile="true"/> 
+  <include file="employee_activity_logs_table.xml" relativeToChangelogFile="true"/> 
+  <include file="employees_table.xml" relativeToChangelogFile="true"/> 
+  <include file="job_history_table.xml" relativeToChangelogFile="true"/> 
+  <include file="jobs_table.xml" relativeToChangelogFile="true"/> 
+  <include file="locations_table.xml" relativeToChangelogFile="true"/> 
+  <include file="regions_table.xml" relativeToChangelogFile="true"/> 
+  <include file="countr_reg_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="dept_loc_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="emp_dept_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="emp_job_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="fk_act_logs_emp_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="jhist_dept_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="jhist_emp_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="jhist_job_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="loc_c_id_fk_ref_constraint.xml" relativeToChangelogFile="true"/> 
+  <include file="emp_email_uk_index.xml" relativeToChangelogFile="true"/> 
+</databaseChangeLog>

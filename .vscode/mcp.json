@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "oracle-sqlcl-hr-lab": {
+      "command": "sql",
+      "args": [
+        "-mcp",
+        "-name",
+        "mcp_hr_lab"
+      ],
+      "env": {
+        "NLS_LANG": "AMERICAN_AMERICA.AL32UTF8"
+      }
+    }
+  }
+}
