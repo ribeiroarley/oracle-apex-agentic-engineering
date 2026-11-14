@@ -39,6 +39,14 @@ __pycache__/
 offload_cache/
 **/offload_cache/
 
+# Arquivos de geracao de video e apresentacao (binarios e midias temporarias)
+video-presentation/output/
+**/video-presentation/output/
+video-presentation/temp/
+**/video-presentation/temp/
+*.mp4
+*.mp3
+
 # Arquivos do Sistema Operacional
 .DS_Store
 Thumbs.db

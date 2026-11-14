@@ -10,6 +10,10 @@ Este projeto documenta a transição de paradigma no ecossistema Oracle: do dese
 
 - **Dossiê Analítico Completo:** [docs/AUDITORIA_PALESTRA_APEX.md](docs/AUDITORIA_PALESTRA_APEX.md) (Análise aprofundada dos 40 slides, com transcrição, diagramas Mermaid, prompts práticos e insights de DBA/Arquiteto).
 - **Galeria de Slides da Palestra:** [docs/slides/](docs/slides/) (Imagens originais indexadas de 01 a 40 em alta resolução).
+- **Blueprint de Arquitetura Corporativa:**
+  - [Propósito Unificado da Esteira DevSecOps](architecture-blueprint/PROPOSITO_UNIFICADO.md) (Topologia real de implantação, isolamento zero-agentes no Exadata e estudo de caso em manufatura).
+  - [Plano de Ação de Implantação](architecture-blueprint/PLANO_ACAO_IMPLANTACAO.md) (Roteiro de consultoria em 4 fases, matriz RACI e pré-requisitos de infraestrutura).
+- **Apresentações Técnicas em Vídeo (Full HD 1080p):** [video-presentation/README.md](video-presentation/README.md) (Dois vídeos completos: 01. Visão Executiva & Arquitetura e 02. Implementação Prática Passo a Passo, com normalização fonética e pipeline automatizada em Python via Edge-TTS, Playwright e FFmpeg).
 - **Configuração MCP para VS Code:** [.vscode/mcp.json](.vscode/mcp.json).
 
 ---
@@ -281,6 +285,9 @@ oracle-apex-agentic-engineering/
 │   ├── extensions.json
 │   ├── mcp.json                                      # Registro do Oracle SQLcl MCP Server
 │   └── settings.json
+├── architecture-blueprint/                           # Blueprint corporativo e plano de ação
+│   ├── PROPOSITO_UNIFICADO.md                       # Visão end-to-end, topologia real e estudo de caso
+│   └── PLANO_ACAO_IMPLANTACAO.md                    # Roadmap de 8 semanas, matriz RACI e requisitos
 ├── docs/                                             # Documentação técnica e recursos
 │   ├── AUDITORIA_PALESTRA_APEX.md                   # Dossiê técnico completo dos 40 slides
 │   └── slides/                                       # 40 capturas de tela originais da palestra
@@ -303,15 +310,20 @@ oracle-apex-agentic-engineering/
 │   │   └── SKILL_DBA_TUNING_AUDIT.md                 # Skill declarativa de auditoria DBA
 │   └── tools/
 │       └── offload_query.py                          # Utilitário de Tool Call Offloading
-└── lab-03-gitops-liquibase/                          # Laboratório 03: GitOps & Liquibase
-    ├── README.md                                     # Guia específico do Lab 03
-    └── changelog/
-        ├── controller.xml                            # Master Controller Liquibase
-        ├── baseline/                                 # Snapshot declarativo gerado via SQLcl
-        │   ├── controller.xml
-        │   └── ... (XMLs de tabelas e constraints)
-        └── changesets/
-            └── v1.1.0-tuning-indexes.xml             # Changeset dos índices com rollback
+├── lab-03-gitops-liquibase/                          # Laboratório 03: GitOps & Liquibase
+│   ├── README.md                                     # Guia específico do Lab 03
+│   └── changelog/
+│       ├── controller.xml                            # Master Controller Liquibase
+│       ├── baseline/                                 # Snapshot declarativo gerado via SQLcl
+│       │   ├── controller.xml
+│       │   └── ... (XMLs de tabelas e constraints)
+│       └── changesets/
+│           └── v1.1.0-tuning-indexes.xml             # Changeset dos índices com rollback
+└── video-presentation/                               # Apresentações técnicas em vídeo (Full HD 1080p)
+    ├── ROTEIRO_VIDEO_01_ARQUITETURA.md               # Roteiro 01: Visão Executiva e Arquitetura (12 cenas)
+    ├── ROTEIRO_VIDEO_02_IMPLEMENTACAO.md             # Roteiro 02: Implementação Prática Passo a Passo (12 cenas)
+    ├── build_video.py                                # Pipeline de renderização (TTS + Playwright + FFmpeg)
+    └── README.md                                     # Documentação da esteira de vídeo e guia de reprodução
 ```
 
 ---
@@ -332,7 +344,7 @@ Antes de qualquer publicação ou compartilhamento deste repositório, foi execu
 
 ## Créditos e Referências
 
-- **Palestra:** *"The APEX Dev Reinvented: Building Autonomous Systems"* — **Bruno Cardoso** | Oracle ACE Associate / Oracle APEX Solutions Architect).
+- **Palestra Original:** *"The APEX Dev Reinvented: Building Autonomous Systems"* — **Bruno Cardoso** ([LinkedIn](https://www.linkedin.com/in/bruno-cardoso-apex/) | Oracle ACE Associate / Oracle APEX Solutions Architect).
 - **Implementação dos Laboratórios, Arquitetura de Banco e Governança:** **Arley Ribeiro** (DBA / Infraestrutura de Dados).
 - **Revisão e Estruturação da Escrita:** **IA (Google Gemini)**.
 - **Oracle Database 23ai Free:** Oracle Corporation.
